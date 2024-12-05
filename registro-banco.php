@@ -17,27 +17,6 @@ function listaRegistro($conexao): array {
     return $registros;
 }
 
-function listaConsumoCafe($conexao): array {
-    $consumos = array();
-
-    $query = "
-        SELECT ca.nome AS cafe_nome, SUM(co.quantidade) AS quantidade_total
-        FROM consumo co
-        INNER JOIN cafe ca ON ca.id = co.cafe_id
-        GROUP BY co.cafe_id
-    ";
-
-    $instrucao = $conexao->prepare($query);
-    $instrucao->execute();
-    $resultado = $instrucao->get_result();
-    
-    while ($consumo = $resultado->fetch_assoc()) {
-        array_push($consumos, $consumo);
-    }
-
-    return $consumos;
-}
-
 
 
 

@@ -39,15 +39,6 @@ function tiposPorNome($conexao, $nome){
     return $count['qtd'];
 }
 
-function tiposVinculados($conexao, $id){
-    $query = "select count(id) as qtd from cafe where tipo_id = ?";
-    $instrucao = $conexao->prepare($query);
-    $instrucao->bind_param('i', $id);
-    $instrucao->execute();
-    $resultado = $instrucao->get_result();
-    $count = $resultado->fetch_assoc();
-    return $count['qtd'];
-}
 
 function removeTipo($conexao, $id){
     $query = "delete from tipo where id = ?";
