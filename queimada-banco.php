@@ -34,15 +34,34 @@ function listaQueimada($conexao): array {
 
     return $queimadas;
 }
+function removeQueimada($conexao, $id){
+    $query = "delete from queimadas where id = ?";
+    $instrucao = $conexao->prepare($query);
+    $instrucao->bind_param('i', $id);
+    return $instrucao->execute();
+}
 
 
-function buscaCafePorId($conexao, $id){
-    $query = "select id, nome, descricao, tipo_id from cafe where id = ?";
+function buscaQueimadaPorId($conexao, $id){
+    $query = "select id, cidade, estado, descricao, tipo_id from queimadas where id = ?";
     $instrucao = $conexao->prepare($query);
     $instrucao->bind_param('i', $id);
     $instrucao->execute();
     $resultado = $instrucao->get_result();
     return $resultado->fetch_assoc();
+}
+function alteraQueimada($conexao, $id, $cidade, $estado, $descricao, $tipo_id) {
+   
+    $query = "UPDATE queimadas SET cidade = ?, estado = ?, descricao = ?, tipo_id = ? WHERE id = ?";
+
+    
+    $instrucao = $conexao->prepare($query);
+
+    
+    $instrucao->bind_param('ssssi', $cidade, $estado, $descricao, $tipo_id, $id);
+
+    
+    return $instrucao->execute();
 }
 
 

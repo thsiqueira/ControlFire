@@ -63,6 +63,7 @@ include 'queimada-banco.php';
             ?>
         </tbody>
     </table>
+   
 
 <?php 
 include 'rodape.php';

@@ -22,6 +22,7 @@ function validaForm() {
         document.getElementById('msg-erro').innerHTML = msg;
         return false; 
     }
-
+    
+    document.formqueimada.action = destino;
     document.formqueimada.submit(); 
 }

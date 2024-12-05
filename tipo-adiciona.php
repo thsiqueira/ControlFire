@@ -2,6 +2,36 @@
 include 'cabecalho-menu.php';
 include 'conexao.php';
 include 'tipo-banco.php';
+?>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inserir Tipo</title>
+    <style>
+        .text-success {
+            color: white;
+            font-weight: bold;
+            background-color: green;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .text-danger {
+            color: white;
+            font-weight: bold;
+            background-color: red;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<?php
 
 $nome = $_POST['nome'];
 $existeTipo = tiposPorNome($conexao, $nome);
@@ -9,7 +39,7 @@ $existeTipo = tiposPorNome($conexao, $nome);
         $adicionou = adicionaTipo($conexao, $nome);
         if ($adicionou){
         ?>
-        <p class="text-sucess">Tipo <?=$nome?> inserido com sucesso.</p>
+        <p class="text-success">Tipo <?=$nome?> inserido com sucesso.</p>
         <?php
         }
         else{
@@ -26,7 +56,9 @@ $existeTipo = tiposPorNome($conexao, $nome);
 
 ?>
 
-
 <?php 
 include 'rodape.php';
 ?>
+
+</body>
+</html>
