@@ -45,7 +45,7 @@ $tipos = listaTipo($conexao);
                     <?php
                     foreach($tipos as $tipo)
                     {
-                        $opcaoSelecionada = ($cafe['tipo_id'] == $tipo['id']) ? "selected='selected'" : "";
+                        $opcaoSelecionada = ($queimada['tipo_id'] == $tipo['id']) ? "selected='selected'" : "";
                     ?>
                     <option value="<?=$tipo['id']?>">  <?=$tipo['nome']?></option>
                     <?php
